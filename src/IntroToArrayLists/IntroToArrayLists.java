@@ -13,14 +13,16 @@ public class IntroToArrayLists {
 	//	for(String s : mehList ) {
 	//		System.out.println(s);
 	//	}
-		for(int i = 4; i > mehList.size(); i--) {
+		// Reverse loop. Only prints words with an 'e'
+		for(int i =  mehList.size() -1; i >= 0; i--) {
 			String s = mehList.get(i);
-			System.out.println(s);
+			if(s.contains("e")) {
+				System.out.println(s);	
+			}
+			
+			
 		}
 		
 		
-		//6. Print all the Strings in reverse order.
-		
-		//7. Print only the Strings that have the letter 'e' in them.
 	}
 }
