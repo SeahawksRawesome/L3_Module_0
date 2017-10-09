@@ -36,9 +36,11 @@ public class LogSearch implements ActionListener {
 	JButton AddEntry;
 	JButton SearchID;
 	JButton ViewList;
+	JButton Remove;
+	HashMap<Integer, String> Search = new HashMap<Integer, String>();
 
 	public static void main(String[] args) {
-
+		
 		LogSearch m = new LogSearch();
 	}
 
@@ -48,24 +50,28 @@ public class LogSearch implements ActionListener {
 		AddEntry = new JButton();
 		SearchID = new JButton();
 		ViewList = new JButton();
+		Remove = new JButton();
 		f1.add(p1);
 		p1.add(AddEntry);
 		p1.add(SearchID);
 		p1.add(ViewList);
+		p1.add(Remove);
 		f1.setVisible(true);
 		f1.setSize(500, 500);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		AddEntry.setText("Add Entry");
 		SearchID.setText("Search by ID");
 		ViewList.setText("View List");
+		Remove.setText("Clhieck MEH two REEMOOVPHHE SOM'IN PLHEASE");
 		AddEntry.addActionListener(this);
 		SearchID.addActionListener(this);
 		ViewList.addActionListener(this);
+		Remove.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		HashMap<Integer, String> Search = new HashMap<Integer, String>();
+		
 		// TODO Auto-generated method stub
 		if (e.getSource() == AddEntry) {
 			String x = JOptionPane.showInputDialog("Enter an ID Number please");
@@ -79,10 +85,28 @@ public class LogSearch implements ActionListener {
 			System.out.println(n);
 			System.out.println(Search);
 			if (Search.keySet().contains(n)) {
-				System.out.println(Search.get(n));
+				JOptionPane.showMessageDialog(null, Search.get(n));
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Does not have designated ID Number");
+			}
+			
+		}
+		if(e.getSource() == ViewList) {
+			String Last = "";
+			for(Integer i : Search.keySet()) {
+				Last += "ID: " + i + " Name: " + Search.get(i) + "\n";
+			}
+			JOptionPane.showMessageDialog(null, Last);
+		}
+		if(e.getSource() == Remove) {
+			String t = JOptionPane.showInputDialog("Enter an ID Number");
+			Integer v = Integer.parseInt(t);
+			if(Search.keySet().contains(v)) {
+				Search.remove(v);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Ha! KNERD! This NUMBA does ent exit ist! GET Troll elled! Gigity");
 			}
 		}
 	}
